@@ -1,0 +1,31 @@
+oc_fentis_login:
+    path:     /
+    defaults: { _controller: OCFentisBundle:Advert:login }
+
+oc_fentis_welcome:
+    path:     /index
+    defaults: { _controller: OCFentisBundle:Advert:index }
+
+oc_fentis_characterprofile:
+    path:     /character-profile
+    defaults: { _controller: OCFentisBundle:Advert:charprof }
+
+oc_fentis_globals:
+    path:     /globals
+    defaults: { _controller: OCFentisBundle:Advert:globals }
+
+oc_fentis_skills:
+    path:     /skills
+    defaults: { -controller: OCFentisBundle:Advert:skills }
+
+oc_fentis_lifeinfo:
+    path:     /life_info
+    defaults: { _controller: OCFentisBundle:Advert:lifeinfo }
+    
+oc_fentis_equip:
+    path:     /equip
+    defaults: { _controller: OCFentisBundle:Advert:equip }
+    
+oc_fentis_chat:
+    path:     /chat
+    defaults: { _controller: OCFentisBundle:Advert:chat }
