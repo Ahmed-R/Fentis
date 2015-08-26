@@ -16,10 +16,10 @@ oc_fentis_globals:
 
 oc_fentis_skills:
     path:     /skills
-    defaults: { -controller: OCFentisBundle:Advert:skills }
+    defaults: { _controller: OCFentisBundle:Advert:skills }
 
 oc_fentis_lifeinfo:
-    path:     /life_info
+    path:     /lifeinfo
     defaults: { _controller: OCFentisBundle:Advert:lifeinfo }
     
 oc_fentis_equip:
