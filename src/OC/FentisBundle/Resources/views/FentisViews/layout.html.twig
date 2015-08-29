@@ -1,0 +1,17 @@
+{% extends "::global_layout.html.twig" %}
+
+{% block title %} {{ parent() }} INDEX {% endblock %}
+
+{% block body %}
+  <p>
+    {{ name }}
+
+{% for user in listUsers %}
+  {% if user.image is not null %}
+    Image de {{ user.login }} :
+    <img src=" {{ user.image.url }} " alt="{{ user.image.alt }}"> <br>
+  {% endif %}
+{% endfor %}
+
+  </p>
+{% endblock %}

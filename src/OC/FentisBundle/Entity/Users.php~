@@ -129,27 +129,4 @@ class Users{
         return $this->regular;
     }
     
-
-    /**
-     * Set image
-     *
-     * @param \OC\FentisBundle\Entity\Image $image
-     * @return Users
-     */
-    public function setImage(\OC\FentisBundle\Entity\Image $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \OC\FentisBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 }

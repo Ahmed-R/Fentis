@@ -1,31 +1,39 @@
 oc_fentis_login:
     path:     /
-    defaults: { _controller: OCFentisBundle:Advert:login }
+    defaults: { _controller: OCFentisBundle:Fentis:login }
 
 oc_fentis_welcome:
     path:     /index
-    defaults: { _controller: OCFentisBundle:Advert:index }
+    defaults: { _controller: OCFentisBundle:Fentis:index }
 
 oc_fentis_characterprofile:
     path:     /character-profile
-    defaults: { _controller: OCFentisBundle:Advert:charprof }
+    defaults: { _controller: OCFentisBundle:Fentis:charprof }
 
 oc_fentis_globals:
     path:     /globals
-    defaults: { _controller: OCFentisBundle:Advert:globals }
+    defaults: { _controller: OCFentisBundle:Fentis:globals }
 
 oc_fentis_skills:
     path:     /skills
-    defaults: { _controller: OCFentisBundle:Advert:skills }
+    defaults: { _controller: OCFentisBundle:Fentis:skills }
 
 oc_fentis_lifeinfo:
     path:     /lifeinfo
-    defaults: { _controller: OCFentisBundle:Advert:lifeinfo }
+    defaults: { _controller: OCFentisBundle:Fentis:lifeinfo }
     
 oc_fentis_equip:
     path:     /equip
-    defaults: { _controller: OCFentisBundle:Advert:equip }
+    defaults: { _controller: OCFentisBundle:Fentis:equip }
     
 oc_fentis_chat:
     path:     /chat
-    defaults: { _controller: OCFentisBundle:Advert:chat }
+    defaults: { _controller: OCFentisBundle:Fentis:chat }
+    
+oc_fentis_valkiard:
+    path:     /addvalkiard
+    defaults: { _controller: OCFentisBundle:Fentis:addvalkiard }
+    
+oc_fentis_kristobald:
+    path:     /addkristobald
+    defaults: { _controller: OCFentisBundle:Fentis:addkristobald }
