@@ -65,6 +65,7 @@ class FichePerso
     
     /**
      * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Fiche")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $fiche;
 

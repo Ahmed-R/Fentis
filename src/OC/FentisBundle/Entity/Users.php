@@ -36,6 +36,7 @@ class Users{
      
     /**
      * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Fiche", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $fiche;
     
