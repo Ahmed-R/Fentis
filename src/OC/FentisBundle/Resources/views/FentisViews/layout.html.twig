@@ -4,14 +4,35 @@
 
 {% block body %}
   <p>
-    {{ name }}
+    {{ name }} <br>
 
-{% for user in listUsers %}
-  {% if user.image is not null %}
-    Image de {{ user.login }} :
-    <img src=" {{ user.image.url }} " alt="{{ user.image.alt }}"> <br>
-  {% endif %}
-{% endfor %}
+{# {% if listUsers is defined %}
+  {% for user in listUsers %}
+    {% if user.image is not null %}
+      Image de {{ user.login }} :
+      <img src=" {{ user.image.url }} " alt="{{ user.image.alt }}"> <br>
+    {% endif %}
+  {% endfor %}
+{% endif %} #}
+
+{# {% if form is defined %}
+  <h3> Formulaire </h3>
+  {{ form(form) }}
+{% endif %} #}
+
+{% if user is defined %}
+  info sur le user <br>
+  login du perso : {{ user.login }}<br>
+  nom du personnage : {{ user.fiche.personnage }}<br>
+  sexe du personnage : {{ user.fiche.sexe }}<br>
+  avantage du personnage : {{ user.fiche.avantagesraciaux }}<br>
+  inconvénient du perso : {{ user.fiche.inconvenientraciaux }}<br>
+
+  <hr>
+
+  image du perso : <br>
+  <img src="{{ user.image.url }}" alt="{{ user.image.alt }}">
+{% endif %}
 
   </p>
 {% endblock %}

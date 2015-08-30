@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use OC\FentisBundle\Entity\Users;
+use OC\FentisBundle\Entity\Fiche;
 use OC\FentisBundle\Entity\Image;
 
 class FentisController extends Controller {
@@ -88,53 +89,60 @@ class FentisController extends Controller {
         return new Response($content);
     }
     
-    public function addvalkiardAction(Request $request){
+    public function formAction(Request $request){
+        //Création d'un nouvel objet Users
         $user = new Users();
-        $user->setLogin('Valkiard');
         
-        $image = new Image();
-        $image->setUrl('http://www.fightersgeneration.com/characters2/big-k.jpg');
-        $image->setAlt('Mec Classe');
+        //Recupération du constructeur de formulaire
+        $formBuilder = $this
+                ->get('form.factory')
+                ->createBuilder('form', $user);
         
-        $user->setImage($image);
+        //Affichage
+        $formBuilder
+                ->add('champs1',    'text')
+                ->add('champs2',    'password')
+                ->add('champs3',    'textarea')
+                ->add('save',       'submit')
+                ;
         
-        $em = $this
-                ->getDoctrine()
-                ->getManager();
-        //Persistance de l'objet User créé en "dur"
-        $em->persist($user);
-        //flush de la persistance pour la valider
-        $em->flush();
+        //Recuperation du formulaire
+        $form = $formBuilder->getForm();
         
-        return $this
-                ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-            'name' => $user->getLogin().' ajouté'
+        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
+            'name' => 'test',
+            'form' => $form->createView(),
         ));
-        
-    }
 
-    public function addkristobaldAction(Request $request){
-        $user = new Users();
-        $user->setLogin('Kristobald');
+    }
+    
+    public function ajoutAction(){
+                
+        $user = new Users();        
+        $user->setLogin("Valkiard");
+        
+        $fiche = new Fiche();
+        $fiche->setPersonnage("Azuro");
+        $fiche->setRace("Humain");
+        $fiche->setSexe("Male");
+        $fiche->setAvantagesRaciaux("Polyvalent");
+        $fiche->setInconvenientRaciaux("Tendances Pyromanes");
+        
+        $user->setFiche($fiche);
         
         $image = new Image();
-        $image->setUrl('http://i2.cdscdn.com/pdt2/2/3/6/1/700x700/rub0082686689236/rw/crane-souple-chauve-alien.jpg');
-        $image->setAlt('Mec Chauve');
-        
+        $image->setUrl("http://a398.idata.over-blog.com/367x500/2/81/84/29/R-pertoir-images-diverses/arton221.jpg");
+        $image->setAlt("Mage de Feu");
         $user->setImage($image);
         
-        $em = $this
-                ->getDoctrine()
-                ->getManager();
-        //Persistance de l'objet User créé en "dur"
+        $em = $this->getDoctrine()->getManager();
         $em->persist($user);
-        //flush de la persistance pour la valider
         $em->flush();
         
-        return $this
-                ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-            'name' => $user->getLogin().' ajouté'
+        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
+            'name' => "page ajout",
+            'user' => $user
+                
         ));
-        
     }
-    }
+}

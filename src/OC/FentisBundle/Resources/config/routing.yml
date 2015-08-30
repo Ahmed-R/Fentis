@@ -30,10 +30,10 @@ oc_fentis_chat:
     path:     /chat
     defaults: { _controller: OCFentisBundle:Fentis:chat }
     
-oc_fentis_valkiard:
-    path:     /addvalkiard
-    defaults: { _controller: OCFentisBundle:Fentis:addvalkiard }
+oc_fentis_form:
+    path:     /form
+    defaults: { _controller: OCFentisBundle:Fentis:form }
     
-oc_fentis_kristobald:
-    path:     /addkristobald
-    defaults: { _controller: OCFentisBundle:Fentis:addkristobald }
+oc_fentis_ajout:
+    path:     /ajout
+    defaults: { _controller: OCFentisBundle:Fentis:ajout }

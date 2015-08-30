@@ -35,15 +35,35 @@ class Users{
     private $password;
     
     /**
-     * @ORM\Column(name="regular", type="boolean")
-     */
-    private $regular = true;
-
-    /**
      * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Image", cascade={"persist"})
      */
     private $image;
     
+    /**
+     * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Fiche", cascade={"persist"})
+     */
+    private $fiche;
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="champs1", type="string", length=255)
+     */
+    private $champs1;
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="champs2", type="string", length=255)
+     */
+    private $champs2;
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="champs3", type="string", length=255)
+     */
+    private $champs3;
     
     /**
      * Get id
@@ -103,6 +123,9 @@ class Users{
 
     public function __construct(){
         $this->password = "123";
+        $this->champs1  = "Contenu du champs 1"; 
+        $this->champs2  = "Contenu du champs 2";
+        $this->champs3  = "Contenu du champs 3";         
     }
     
 
@@ -151,5 +174,97 @@ class Users{
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set champs1
+     *
+     * @param string $champs1
+     * @return Users
+     */
+    public function setChamps1($champs1)
+    {
+        $this->champs1 = $champs1;
+
+        return $this;
+    }
+
+    /**
+     * Get champs1
+     *
+     * @return string 
+     */
+    public function getChamps1()
+    {
+        return $this->champs1;
+    }
+
+    /**
+     * Set champs2
+     *
+     * @param string $champs2
+     * @return Users
+     */
+    public function setChamps2($champs2)
+    {
+        $this->champs2 = $champs2;
+
+        return $this;
+    }
+
+    /**
+     * Get champs2
+     *
+     * @return string 
+     */
+    public function getChamps2()
+    {
+        return $this->champs2;
+    }
+
+    /**
+     * Set champs3
+     *
+     * @param string $champs3
+     * @return Users
+     */
+    public function setChamps3($champs3)
+    {
+        $this->champs3 = $champs3;
+
+        return $this;
+    }
+
+    /**
+     * Get champs3
+     *
+     * @return string 
+     */
+    public function getChamps3()
+    {
+        return $this->champs3;
+    }
+
+    /**
+     * Set fiche
+     *
+     * @param \OC\FentisBundle\Entity\Fiche $fiche
+     * @return Users
+     */
+    public function setFiche(\OC\FentisBundle\Entity\Fiche $fiche = null)
+    {
+        $this->fiche = $fiche;
+
+        return $this;
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \OC\FentisBundle\Entity\Fiche 
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
     }
 }
