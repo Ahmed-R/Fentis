@@ -37,26 +37,4 @@ class Fiche
         return $this->id;
     }
 
-    /**
-     * Set image
-     *
-     * @param \OC\FentisBundle\Entity\Image $image
-     * @return Fiche
-     */
-    public function setImage(\OC\FentisBundle\Entity\Image $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \OC\FentisBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 }

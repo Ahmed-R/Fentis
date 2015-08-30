@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class FicheRepository extends EntityRepository
 {
+        public function myFindAll(){
+        return $this
+                ->createQueryBuilder('a')
+                ->getQuery()
+                ->getResult()
+                ;
+    }
 }

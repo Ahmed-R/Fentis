@@ -18,10 +18,18 @@ class FentisController extends Controller {
     }
     
     public function indexAction(){
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('OCFentisBundle:Fiche');
+        
+        $listfiche = $repository->myfindAll();
+        
         $content = $this
                 ->get('templating')
                 ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-                        "name" => "index"
+                        "name" => "index",
+                        "listfiche" => $listfiche
                 ));
         return new Response($content);
     }
@@ -89,60 +97,12 @@ class FentisController extends Controller {
         return new Response($content);
     }
     
-    public function formAction(Request $request){
-        //Création d'un nouvel objet Users
-        $user = new Users();
+    public function formAction(){
         
-        //Recupération du constructeur de formulaire
-        $formBuilder = $this
-                ->get('form.factory')
-                ->createBuilder('form', $user);
-        
-        //Affichage
-        $formBuilder
-                ->add('champs1',    'text')
-                ->add('champs2',    'password')
-                ->add('champs3',    'textarea')
-                ->add('save',       'submit')
-                ;
-        
-        //Recuperation du formulaire
-        $form = $formBuilder->getForm();
-        
-        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-            'name' => 'test',
-            'form' => $form->createView(),
-        ));
-
     }
     
     public function ajoutAction(){
-                
-        $user = new Users();        
-        $user->setLogin("Valkiard");
-        
-        $fiche = new Fiche();
-        $fiche->setPersonnage("Azuro");
-        $fiche->setRace("Humain");
-        $fiche->setSexe("Male");
-        $fiche->setAvantagesRaciaux("Polyvalent");
-        $fiche->setInconvenientRaciaux("Tendances Pyromanes");
-        
-        $user->setFiche($fiche);
-        
-        $image = new Image();
-        $image->setUrl("http://a398.idata.over-blog.com/367x500/2/81/84/29/R-pertoir-images-diverses/arton221.jpg");
-        $image->setAlt("Mage de Feu");
-        $user->setImage($image);
-        
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
-        
-        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-            'name' => "page ajout",
-            'user' => $user
-                
-        ));
+
     }
+
 }
