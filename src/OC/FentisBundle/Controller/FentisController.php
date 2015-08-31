@@ -93,15 +93,15 @@ class FentisController extends Controller {
     
     public function ajoutAction(Request $request){
         $user = new Users();
-        $user->setLogin("AhmedTest1");
+        $user->setLogin("AhmedTest2");
         
         $ficheperso = new FichePerso();
-        $ficheperso->setPersonnage("ValkiardTest1");
+        $ficheperso->setPersonnage("ValkiardTest2");
         $ficheperso->setXptotal("100");
         $ficheperso->setXprestant("10");
-        $ficheperso->setRace("Humain");
-        $ficheperso->setAvantagesRaciaux("Polyvalent");
-        $ficheperso->setInconvenientRaciaux("Pyromane");
+        $ficheperso->setRace("elfe");
+        $ficheperso->setAvantagesRaciaux("Doué pour la magie");
+        $ficheperso->setInconvenientRaciaux("Fragile");
         $ficheperso->setUser($user);
         
         $skills = new Skills();
@@ -119,6 +119,42 @@ class FentisController extends Controller {
         
         return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
             'name' => 'page d\'ajout'
+        ));
+    }
+    
+    public function voirAction(){
+        //Récupération de la premiere partie de la feuille de perso
+        $recup1 = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('OCFentisBundle:Users')
+                ->findOneBy(array('login' => 'AhmedTest1'));
+        $formBuilder1 = $this->get('form.factory')->createBuilder('form', $recup1);
+        $formBuilder1->add('login'       ,'text');
+        $form1 = $formBuilder1->getForm();
+        
+        //Récupération de la deuxieme partie de la feuille de perso
+        $recup2 = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('OCFentisBundle:FichePerso')
+//                ->findOneBy(array('user_id' => "2"))
+                //'ai triché : le findOneBy ne semble pas marcher. ai cherché directement via l'id.
+                ->find(1)
+                ;
+        $formBuilder2 = $this->get('form.factory')->createBuilder('form', $recup2);
+        $formBuilder2
+                ->add('personnage'          ,'text')
+                ->add('xptotal'             ,'number')
+                ->add('xprestant'           ,'number')
+                ->add('avantagesraciaux'    ,'text')
+                ->add('InconvenientRaciaux' ,'text');
+        $form2 = $formBuilder2->getForm();
+        
+        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
+            'name' => 'voir',
+            'recup1' => $form1->createView(),
+            'recup2' => $form2->createView()
         ));
     }
     

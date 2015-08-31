@@ -37,3 +37,7 @@ oc_fentis_form:
 oc_fentis_ajout:
     path:     /ajout
     defaults: { _controller: OCFentisBundle:Fentis:ajout }
+    
+oc_fentis_voir:
+    path:     /voir
+    defaults: { _controller: OCFentisBundle:Fentis:voir }

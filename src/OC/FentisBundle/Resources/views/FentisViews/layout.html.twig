@@ -14,14 +14,14 @@
     {% endif %}
   {% endfor %}
 {% endif %} #}
-
+{#
 {% if form1 is defined %}
   <h3> Formulaire </h3>
   {{ form(form1) }}
-{% endif %}
+{% endif %} #}
 
-{% if form2 is defined %}
-  {{ form(form2) }}
-{% endif %}
+  {{ form(recup1) }}
+  <br>
+  {{ form(recup2) }}
   </p>
 {% endblock %}
