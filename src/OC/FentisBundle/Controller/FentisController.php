@@ -19,19 +19,11 @@ class FentisController extends Controller {
         return new Response($content);                
     }
     
-    public function indexAction(){
-        $repository = $this
-                ->getDoctrine()
-                ->getManager()
-                ->getRepository('OCFentisBundle:Fiche');
-        
-        $listfiche = $repository->myfindAll();
-        
+    public function indexAction(){        
         $content = $this
                 ->get('templating')
                 ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-                        "name" => "index",
-                        "listfiche" => $listfiche
+                        "name" => "index"
                 ));
         return new Response($content);
     }
@@ -97,6 +89,37 @@ class FentisController extends Controller {
                         "name" => "chat"
                 ));
         return new Response($content);
+    }
+    
+    public function ajoutAction(Request $request){
+        $user = new Users();
+        $user->setLogin("AhmedTest1");
+        
+        $ficheperso = new FichePerso();
+        $ficheperso->setPersonnage("ValkiardTest1");
+        $ficheperso->setXptotal("100");
+        $ficheperso->setXprestant("10");
+        $ficheperso->setRace("Humain");
+        $ficheperso->setAvantagesRaciaux("Polyvalent");
+        $ficheperso->setInconvenientRaciaux("Pyromane");
+        $ficheperso->setUser($user);
+        
+        $skills = new Skills();
+        $skills->setDetection("10");
+        $skills->setEducation("9");
+        $skills->setParade("8");
+        $skills->setUser($user);
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->persist($ficheperso);
+        $em->persist($skills);
+        
+        $em->flush();
+        
+        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
+            'name' => 'page d\'ajout'
+        ));
     }
     
 }

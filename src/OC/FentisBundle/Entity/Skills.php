@@ -42,6 +42,11 @@ class Skills
      */
     private $parade;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
     
     /**
      * Get id
@@ -120,5 +125,28 @@ class Skills
     public function getParade()
     {
         return $this->parade;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \OC\FentisBundle\Entity\Users $user
+     * @return Skills
+     */
+    public function setUser(\OC\FentisBundle\Entity\Users $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \OC\FentisBundle\Entity\Users 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

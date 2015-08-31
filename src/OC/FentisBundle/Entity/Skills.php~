@@ -42,6 +42,11 @@ class Skills
      */
     private $parade;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
     
     /**
      * Get id
@@ -97,5 +102,28 @@ class Skills
     public function getDetection()
     {
         return $this->detection;
+    }
+
+    /**
+     * Set parade
+     *
+     * @param string $parade
+     * @return Skills
+     */
+    public function setParade($parade)
+    {
+        $this->parade = $parade;
+
+        return $this;
+    }
+
+    /**
+     * Get parade
+     *
+     * @return string 
+     */
+    public function getParade()
+    {
+        return $this->parade;
     }
 }

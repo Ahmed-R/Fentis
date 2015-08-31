@@ -62,6 +62,12 @@ class FichePerso
      * @ORM\Column(name="inconvenient_raciaux", type="text")
      */
     private $inconvenientRaciaux;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * Get id
@@ -209,5 +215,28 @@ class FichePerso
     public function getInconvenientRaciaux()
     {
         return $this->inconvenientRaciaux;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \OC\FentisBundle\Entity\Users $user
+     * @return FichePerso
+     */
+    public function setUser(\OC\FentisBundle\Entity\Users $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \OC\FentisBundle\Entity\Users 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

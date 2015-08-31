@@ -62,6 +62,12 @@ class FichePerso
      * @ORM\Column(name="inconvenient_raciaux", type="text")
      */
     private $inconvenientRaciaux;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * Get id
