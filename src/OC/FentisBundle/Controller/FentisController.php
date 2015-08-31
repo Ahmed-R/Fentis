@@ -6,10 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use OC\FentisBundle\Entity\Users;
+use OC\FentisBundle\Entity\UsersRepository;
 use OC\FentisBundle\Entity\FichePerso;
+use OC\FentisBundle\Entity\FichePersoRepository;
 use OC\FentisBundle\Entity\Skills;
-use OC\FentisBundle\Entity\Fiche;
+use OC\FentisBundle\Entity\SkillsRepository;
 use OC\FentisBundle\Entity\Image;
+use OC\FentisBundle\Entity\ImageRepository;
+use OC\FentisBundle\Form\UsersType;
+use OC\FentisBundle\Form\FichePersoType;
+use OC\FentisBundle\Form\SkillsType;
+use OC\FentisBundle\Form\ImageType;
 
 class FentisController extends Controller {
     public function loginAction(){
@@ -123,39 +130,7 @@ class FentisController extends Controller {
     }
     
     public function voirAction(){
-        //Récupération de la premiere partie de la feuille de perso
-        $recup1 = $this
-                ->getDoctrine()
-                ->getManager()
-                ->getRepository('OCFentisBundle:Users')
-                ->findOneBy(array('login' => 'AhmedTest1'));
-        $formBuilder1 = $this->get('form.factory')->createBuilder('form', $recup1);
-        $formBuilder1->add('login'       ,'text');
-        $form1 = $formBuilder1->getForm();
-        
-        //Récupération de la deuxieme partie de la feuille de perso
-        $recup2 = $this
-                ->getDoctrine()
-                ->getManager()
-                ->getRepository('OCFentisBundle:FichePerso')
-//                ->findOneBy(array('user_id' => "2"))
-                //'ai triché : le findOneBy ne semble pas marcher. ai cherché directement via l'id.
-                ->find(1)
-                ;
-        $formBuilder2 = $this->get('form.factory')->createBuilder('form', $recup2);
-        $formBuilder2
-                ->add('personnage'          ,'text')
-                ->add('xptotal'             ,'number')
-                ->add('xprestant'           ,'number')
-                ->add('avantagesraciaux'    ,'text')
-                ->add('InconvenientRaciaux' ,'text');
-        $form2 = $formBuilder2->getForm();
-        
-        return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-            'name' => 'voir',
-            'recup1' => $form1->createView(),
-            'recup2' => $form2->createView()
-        ));
+ 
     }
-    
+
 }

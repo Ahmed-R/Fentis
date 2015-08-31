@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class UsersRepository extends EntityRepository{
-    public function myFindAll(){
+    public function myFindId(){
         return $this
                 ->createQueryBuilder('a')
                 ->getQuery()

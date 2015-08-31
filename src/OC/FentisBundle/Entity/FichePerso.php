@@ -68,7 +68,13 @@ class FichePerso
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Image", cascade={"persist"})
+     */
+    private $image;
 
+        
     /**
      * Get id
      *
@@ -238,5 +244,28 @@ class FichePerso
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \OC\FentisBundle\Entity\Image $image
+     * @return FichePerso
+     */
+    public function setImage(\OC\FentisBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \OC\FentisBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

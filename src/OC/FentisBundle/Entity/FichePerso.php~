@@ -64,11 +64,17 @@ class FichePerso
     private $inconvenientRaciaux;
     
     /**
-     * @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Users")
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Users")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Image")
+     */
+    private $image;
 
+        
     /**
      * Get id
      *
