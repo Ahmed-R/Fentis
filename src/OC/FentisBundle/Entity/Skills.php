@@ -20,12 +20,6 @@ class Skills
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Fiche")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $fiche;
 
     /**
      * @var string
@@ -41,7 +35,14 @@ class Skills
      */
     private $detection;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="parade", type="string", length=255)
+     */
+    private $parade;
+    
+    
     /**
      * Get id
      *
@@ -99,25 +100,25 @@ class Skills
     }
 
     /**
-     * Set fiche
+     * Set parade
      *
-     * @param \OC\FentisBundle\Entity\Fiche $fiche
+     * @param string $parade
      * @return Skills
      */
-    public function setFiche(\OC\FentisBundle\Entity\Fiche $fiche = null)
+    public function setParade($parade)
     {
-        $this->fiche = $fiche;
+        $this->parade = $parade;
 
         return $this;
     }
 
     /**
-     * Get fiche
+     * Get parade
      *
-     * @return \OC\FentisBundle\Entity\Fiche 
+     * @return string 
      */
-    public function getFiche()
+    public function getParade()
     {
-        return $this->fiche;
+        return $this->parade;
     }
 }

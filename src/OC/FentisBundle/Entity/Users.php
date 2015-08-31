@@ -33,17 +33,11 @@ class Users{
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
-     
-    /**
-     * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Fiche", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $fiche;
-    
+
     public function __construct(){
         $this->password = "123";
     }
-       
+
     /**
      * Get id
      *
@@ -98,29 +92,6 @@ class Users{
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Set fiche
-     *
-     * @param \OC\FentisBundle\Entity\Ficheglobale $fiche
-     * @return Users
-     */
-    public function setFiche(\OC\FentisBundle\Entity\Ficheglobale $fiche = null)
-    {
-        $this->fiche = $fiche;
-
-        return $this;
-    }
-
-    /**
-     * Get fiche
-     *
-     * @return \OC\FentisBundle\Entity\Ficheglobale 
-     */
-    public function getFiche()
-    {
-        return $this->fiche;
     }
 
 }

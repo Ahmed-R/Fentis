@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use OC\FentisBundle\Entity\Users;
+use OC\FentisBundle\Entity\FichePerso;
+use OC\FentisBundle\Entity\Skills;
 use OC\FentisBundle\Entity\Fiche;
 use OC\FentisBundle\Entity\Image;
 
@@ -97,12 +99,4 @@ class FentisController extends Controller {
         return new Response($content);
     }
     
-    public function formAction(){
-        
-    }
-    
-    public function ajoutAction(){
-
-    }
-
 }

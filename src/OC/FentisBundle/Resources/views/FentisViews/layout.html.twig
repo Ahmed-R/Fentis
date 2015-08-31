@@ -15,10 +15,13 @@
   {% endfor %}
 {% endif %} #}
 
-{# {% if form is defined %}
+{% if form1 is defined %}
   <h3> Formulaire </h3>
-  {{ form(form) }}
-{% endif %} #}
+  {{ form(form1) }}
+{% endif %}
 
+{% if form2 is defined %}
+  {{ form(form2) }}
+{% endif %}
   </p>
 {% endblock %}

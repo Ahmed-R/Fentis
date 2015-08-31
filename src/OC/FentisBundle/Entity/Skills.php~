@@ -20,11 +20,6 @@ class Skills
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Fiche")
-     */
-    private $fiche;
 
     /**
      * @var string
@@ -40,7 +35,14 @@ class Skills
      */
     private $detection;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="parade", type="string", length=255)
+     */
+    private $parade;
+    
+    
     /**
      * Get id
      *
