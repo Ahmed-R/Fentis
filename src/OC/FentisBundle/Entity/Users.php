@@ -2,7 +2,11 @@
 
 namespace OC\FentisBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Users
@@ -10,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="oc_users")
  * @ORM\Entity(repositoryClass="OC\FentisBundle\Entity\UsersRepository")
  */
-class Users{
+class users{
     /**
      * @var integer
      *
@@ -24,15 +28,31 @@ class Users{
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255)
+     * @Assert\length(min=8)
      */
     private $login;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\details", cascade={"persist"})
+     */
+    private $details;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\globals", cascade={"persist"})
      */
-    private $password;
+    private $globals;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\skills", cascade={"persist"})
+     */
+    private $skills;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\lifeInfo", cascade={"persist"})
+     */
+    private $lifeInfo;
+    
+
 
     public function __construct(){
         $this->password = "123";
@@ -52,7 +72,7 @@ class Users{
      * Set login
      *
      * @param string $login
-     * @return Users
+     * @return users
      */
     public function setLogin($login)
     {
@@ -75,7 +95,7 @@ class Users{
      * Set password
      *
      * @param string $password
-     * @return Users
+     * @return users
      */
     public function setPassword($password)
     {
@@ -94,4 +114,96 @@ class Users{
         return $this->password;
     }
 
+
+    /**
+     * Set details
+     *
+     * @param \OC\FentisBundle\Entity\details $details
+     * @return users
+     */
+    public function setDetails(\OC\FentisBundle\Entity\details $details = null)
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    /**
+     * Get details
+     *
+     * @return \OC\FentisBundle\Entity\details 
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
+     * Set skills
+     *
+     * @param \OC\FentisBundle\Entity\skills $skills
+     * @return users
+     */
+    public function setSkills(\OC\FentisBundle\Entity\skills $skills = null)
+    {
+        $this->skills = $skills;
+
+        return $this;
+    }
+
+    /**
+     * Get skills
+     *
+     * @return \OC\FentisBundle\Entity\skills 
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * Set globals
+     *
+     * @param \OC\FentisBundle\Entity\globals $globals
+     * @return users
+     */
+    public function setGlobals(\OC\FentisBundle\Entity\globals $globals = null)
+    {
+        $this->globals = $globals;
+
+        return $this;
+    }
+
+    /**
+     * Get globals
+     *
+     * @return \OC\FentisBundle\Entity\globals 
+     */
+    public function getGlobals()
+    {
+        return $this->globals;
+    }
+
+    /**
+     * Set lifeInfo
+     *
+     * @param \OC\FentisBundle\Entity\lifeinfo $lifeInfo
+     * @return users
+     */
+    public function setLifeInfo(\OC\FentisBundle\Entity\lifeInfo $lifeInfo = null)
+    {
+        $this->lifeInfo = $lifeInfo;
+
+        return $this;
+    }
+
+    /**
+     * Get lifeInfo
+     *
+     * @return \OC\FentisBundle\Entity\lifeInfo 
+     */
+    public function getLifeInfo()
+    {
+        return $this->lifeInfo;
+    }
 }

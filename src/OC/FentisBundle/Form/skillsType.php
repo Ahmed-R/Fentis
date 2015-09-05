@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ImageType extends AbstractType
+class skillsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,12 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url')
-            ->add('alt')
+            ->add('education',              'number')
+            ->add('detection',              'number')
+            ->add('parade',                 'number')
+            ->add('esquive',                'number')
+            ->add('respsy',                 'number')
+            ->add('lucidite',               'number')
         ;
     }
     
@@ -26,7 +30,7 @@ class ImageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\FentisBundle\Entity\Image'
+            'data_class' => 'OC\FentisBundle\Entity\skills'
         ));
     }
 
@@ -35,6 +39,6 @@ class ImageType extends AbstractType
      */
     public function getName()
     {
-        return 'oc_fentisbundle_image';
+        return 'oc_fentisbundle_skills';
     }
 }

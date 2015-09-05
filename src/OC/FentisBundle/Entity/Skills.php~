@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="OC\FentisBundle\Entity\SkillsRepository")
  */
-class Skills
+class skills
 {
     /**
      * @var integer
@@ -22,31 +22,46 @@ class Skills
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="education", type="string", length=255)
+     * @ORM\Column(name="education", type="integer")
      */
     private $education;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="detection", type="string", length=255)
+     * @ORM\Column(name="detection", type="integer")
      */
     private $detection;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="parade", type="string", length=255)
+     * @ORM\Column(name="parade", type="integer")
      */
     private $parade;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="esquive", type="integer")
+     */
+    private $esquive;
     
     /**
-     * @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Users")
-     * @ORM\JoinColumn(nullable=false)
+     * @var integer
+     *
+     * @ORM\Column(name="respsy", type="integer")
      */
-    private $user;
+    private $respsy;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lucidite", type="integer")
+     */
+    private $lucidite;
     
     /**
      * Get id
@@ -125,5 +140,75 @@ class Skills
     public function getParade()
     {
         return $this->parade;
+    }
+
+
+    /**
+     * Set esquive
+     *
+     * @param integer $esquive
+     * @return skills
+     */
+    public function setEsquive($esquive)
+    {
+        $this->esquive = $esquive;
+
+        return $this;
+    }
+
+    /**
+     * Get esquive
+     *
+     * @return integer 
+     */
+    public function getEsquive()
+    {
+        return $this->esquive;
+    }
+
+    /**
+     * Set respsy
+     *
+     * @param integer $respsy
+     * @return skills
+     */
+    public function setRespsy($respsy)
+    {
+        $this->respsy = $respsy;
+
+        return $this;
+    }
+
+    /**
+     * Get respsy
+     *
+     * @return integer 
+     */
+    public function getRespsy()
+    {
+        return $this->respsy;
+    }
+
+    /**
+     * Set lucidite
+     *
+     * @param integer $lucidite
+     * @return skills
+     */
+    public function setLucidite($lucidite)
+    {
+        $this->lucidite = $lucidite;
+
+        return $this;
+    }
+
+    /**
+     * Get lucidite
+     *
+     * @return integer 
+     */
+    public function getLucidite()
+    {
+        return $this->lucidite;
     }
 }

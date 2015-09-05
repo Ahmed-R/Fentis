@@ -5,18 +5,14 @@ namespace OC\FentisBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use OC\FentisBundle\Entity\Users;
-use OC\FentisBundle\Entity\UsersRepository;
-use OC\FentisBundle\Entity\FichePerso;
-use OC\FentisBundle\Entity\FichePersoRepository;
-use OC\FentisBundle\Entity\Skills;
-use OC\FentisBundle\Entity\SkillsRepository;
-use OC\FentisBundle\Entity\Image;
-use OC\FentisBundle\Entity\ImageRepository;
-use OC\FentisBundle\Form\UsersType;
-use OC\FentisBundle\Form\FichePersoType;
-use OC\FentisBundle\Form\SkillsType;
-use OC\FentisBundle\Form\ImageType;
+use OC\FentisBundle\Entity\users;
+use OC\FentisBundle\Entity\skills;
+use OC\FentisBundle\Entity\image;
+
+use OC\FentisBundle\Form\usersType;
+use OC\FentisBundle\Form\fichePersoType;
+use OC\FentisBundle\Form\skillsType;
+use OC\FentisBundle\Form\imageType;
 
 class FentisController extends Controller {
     public function loginAction(){
@@ -44,20 +40,11 @@ class FentisController extends Controller {
         return new Response($content);
     }
 
-    public function globalsAction(){
-        $repository = $this
-                ->getDoctrine()
-                ->getManager()
-                ->getRepository('OCFentisBundle:Users')
-                ;
-        
-        $listUsers = $repository->myfindAll();
-        
+    public function globalsAction(){        
         $content = $this
                 ->get('templating')
                 ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
                     "name" => "globals",
-                    "listUsers" => $listUsers
                 ));
         return new Response($content);
     }
@@ -100,33 +87,23 @@ class FentisController extends Controller {
     
     public function ajoutAction(Request $request){
         $user = new Users();
-        $user->setLogin("AhmedTest2");
+        $form = $this->get('form.factory')->create(new usersType(), $user);
         
-        $ficheperso = new FichePerso();
-        $ficheperso->setPersonnage("ValkiardTest2");
-        $ficheperso->setXptotal("100");
-        $ficheperso->setXprestant("10");
-        $ficheperso->setRace("elfe");
-        $ficheperso->setAvantagesRaciaux("Doué pour la magie");
-        $ficheperso->setInconvenientRaciaux("Fragile");
-        $ficheperso->setUser($user);
-        
-        $skills = new Skills();
-        $skills->setDetection("10");
-        $skills->setEducation("9");
-        $skills->setParade("8");
-        $skills->setUser($user);
-        
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->persist($ficheperso);
-        $em->persist($skills);
-        
-        $em->flush();
+        if ($form->handleRequest($request)->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            
+            $request->getSession()->getFlashBag()->add('notice', 'ajout ok');
+            return $this->redirect($this->generateUrl('oc_fentis_welcome', array(
+                'name' => 'bleubleubleu'
+            )));
+        }
         
         return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-            'name' => 'page d\'ajout'
-        ));
+            'form' => $form->createView(),
+            'name' => 'bliblibli vide'
+        ));   
     }
     
     public function voirAction(){

@@ -5,12 +5,12 @@ namespace OC\FentisBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * FichePerso
+ * details
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="OC\FentisBundle\Entity\FichePersoRepository")
+ * @ORM\Entity(repositoryClass="OC\FentisBundle\Entity\detailsRepository")
  */
-class FichePerso
+class details
 {
     /**
      * @var integer
@@ -48,7 +48,49 @@ class FichePerso
      * @ORM\Column(name="race", type="string", length=255)
      */
     private $race;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=255)
+     */
+    private $sexe;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gabarit", type="string", length=255)
+     */
+    private $gabarit;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="taille", type="integer")
+     */
+    private $taille;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="poids", type="integer")
+     */
+    private $poids;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beaute", type="string", length=255)
+     */
+    private $beaute;    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="caractere", type="text")
+     */
+    private $caractere;    
+    
     /**
      * @var string
      *
@@ -64,16 +106,11 @@ class FichePerso
     private $inconvenientRaciaux;
     
     /**
-     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\Users")
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="note", type="text")
      */
-    private $user;
-    
-    /**
-     * @ORM\OneToOne(targetEntity="OC\FentisBundle\Entity\Image")
-     */
-    private $image;
-
+    private $note;
         
     /**
      * Get id
@@ -221,5 +258,167 @@ class FichePerso
     public function getInconvenientRaciaux()
     {
         return $this->inconvenientRaciaux;
+    }
+
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     * @return details
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string 
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * Set gabarit
+     *
+     * @param string $gabarit
+     * @return details
+     */
+    public function setGabarit($gabarit)
+    {
+        $this->gabarit = $gabarit;
+
+        return $this;
+    }
+
+    /**
+     * Get gabarit
+     *
+     * @return string 
+     */
+    public function getGabarit()
+    {
+        return $this->gabarit;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param integer $taille
+     * @return details
+     */
+    public function setTaille($taille)
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return integer 
+     */
+    public function getTaille()
+    {
+        return $this->taille;
+    }
+
+    /**
+     * Set poids
+     *
+     * @param integer $poids
+     * @return details
+     */
+    public function setPoids($poids)
+    {
+        $this->poids = $poids;
+
+        return $this;
+    }
+
+    /**
+     * Get poids
+     *
+     * @return integer 
+     */
+    public function getPoids()
+    {
+        return $this->poids;
+    }
+
+    /**
+     * Set beaute
+     *
+     * @param string $beaute
+     * @return details
+     */
+    public function setBeaute($beaute)
+    {
+        $this->beaute = $beaute;
+
+        return $this;
+    }
+
+    /**
+     * Get beaute
+     *
+     * @return string 
+     */
+    public function getBeaute()
+    {
+        return $this->beaute;
+    }
+
+    /**
+     * Set caractere
+     *
+     * @param string $caractere
+     * @return details
+     */
+    public function setCaractere($caractere)
+    {
+        $this->caractere = $caractere;
+
+        return $this;
+    }
+
+    /**
+     * Get caractere
+     *
+     * @return string 
+     */
+    public function getCaractere()
+    {
+        return $this->caractere;
+    }
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     * @return details
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string 
+     */
+    public function getNote()
+    {
+        return $this->note;
     }
 }

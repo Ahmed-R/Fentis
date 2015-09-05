@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SkillsType extends AbstractType
+class lifeInfoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,15 @@ class SkillsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('education',  'number')
-            ->add('detection',  'number')
-            ->add('parade',     'number')
+            ->add('forceAme',           'number')
+            ->add('tromperie',          'number')
+            ->add('defCac',             'number')
+            ->add('defDist',            'number')
+            ->add('armure',             'number')
+            ->add('malusTotal',         'number')
+            ->add('eva',                'number')
+            ->add('ptVieTotaux',        'number')
+            ->add('ptVieActuel',        'number')
         ;
     }
     
@@ -27,7 +33,7 @@ class SkillsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\FentisBundle\Entity\Skills'
+            'data_class' => 'OC\FentisBundle\Entity\lifeInfo'
         ));
     }
 
@@ -36,6 +42,6 @@ class SkillsType extends AbstractType
      */
     public function getName()
     {
-        return 'oc_fentisbundle_skills';
+        return 'oc_fentisbundle_lifeinfo';
     }
 }

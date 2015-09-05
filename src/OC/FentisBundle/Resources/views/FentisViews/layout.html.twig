@@ -14,14 +14,15 @@
     {% endif %}
   {% endfor %}
 {% endif %} #}
-{#
-{% if form1 is defined %}
-  <h3> Formulaire </h3>
-  {{ form(form1) }}
-{% endif %} #}
 
-  <br>
+{% for message in app.session.flashbag.get('notice') %}
+  <p>Message flash : {{message}}</p>
+{% endfor %}
+
+{% if form is defined %}
+  <h3> Formulaire </h3>
   {{ form(form) }}
-  </p>
+{% endif %}
+
 
 {% endblock %}

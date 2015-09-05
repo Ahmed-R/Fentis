@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UsersType extends AbstractType
+class usersType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,12 @@ class UsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('login'       ,'text')
-            ->add('password'    ,'password')
+            ->add('login',          'text')
+            ->add('details',        new detailsType())
+            ->add('globals',        new globalsType())
+            ->add('skills',         new skillsType())
+            ->add('lifeInfo',       new lifeInfoType())
+            ->add('save',           'submit')
         ;
     }
     
@@ -26,7 +30,7 @@ class UsersType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\FentisBundle\Entity\Users'
+            'data_class' => 'OC\FentisBundle\Entity\users'
         ));
     }
 
