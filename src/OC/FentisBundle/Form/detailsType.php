@@ -16,13 +16,13 @@ class detailsType extends AbstractType
     {
         $builder
             ->add('personnage',             'text')
-            ->add('xptotal',                'number')
-            ->add('xprestant',              'number')
+            ->add('xptotal',                'integer')
+            ->add('xprestant',              'integer')
             ->add('race',                   'text')
             ->add('sexe',                   'text')
             ->add('gabarit',                'text')
-            ->add('taille',                 'number')
-            ->add('poids',                  'number')
+            ->add('taille',                 'integer')
+            ->add('poids',                  'integer')
             ->add('beaute',                 'textarea')
             ->add('caractere',              'textarea')
             ->add('avantagesRaciaux',       'textarea')

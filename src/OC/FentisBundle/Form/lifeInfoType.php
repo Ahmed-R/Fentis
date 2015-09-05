@@ -15,15 +15,15 @@ class lifeInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('forceAme',           'number')
-            ->add('tromperie',          'number')
-            ->add('defCac',             'number')
-            ->add('defDist',            'number')
-            ->add('armure',             'number')
-            ->add('malusTotal',         'number')
-            ->add('eva',                'number')
-            ->add('ptVieTotaux',        'number')
-            ->add('ptVieActuel',        'number')
+            ->add('forceAme',           'integer')
+            ->add('tromperie',          'integer')
+            ->add('defCac',             'integer')
+            ->add('defDist',            'integer')
+            ->add('armure',             'integer')
+            ->add('malusTotal',         'integer')
+            ->add('eva',                'integer')
+            ->add('ptVieTotaux',        'integer')
+            ->add('ptVieActuel',        'integer')
         ;
     }
     
