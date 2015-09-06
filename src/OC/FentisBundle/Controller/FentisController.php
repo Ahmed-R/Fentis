@@ -107,7 +107,25 @@ class FentisController extends Controller {
     }
     
     public function voirAction(){
- 
+        //On récupère le Repository des users
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('OCFentisBundle:users');
+        //On recupere tous les users enregistrés
+        $listuser = $repository->findAll();
+        
+        //On envoie à la vue la variable $content qui contient $listuser. 
+        //On parcourra cet array avec un boucle for
+        //pour avoir chaque attribut de chaque user
+        $content = $this
+                ->get('templating')
+                ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
+                    "name" => "voir",
+                    "listuser" => $listuser
+                ));
+        return new Response($content);
+        
     }
 
 }

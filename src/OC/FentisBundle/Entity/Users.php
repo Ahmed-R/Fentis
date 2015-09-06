@@ -52,7 +52,10 @@ class users{
      */
     private $lifeInfo;
     
-
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\equip", cascade={"persist"})
+     */
+    private $equip;
 
     public function __construct(){
         $this->password = "123";
@@ -205,5 +208,28 @@ class users{
     public function getLifeInfo()
     {
         return $this->lifeInfo;
+    }
+
+    /**
+     * Set equip
+     *
+     * @param \OC\FentisBundle\Entity\equip $equip
+     * @return users
+     */
+    public function setEquip(\OC\FentisBundle\Entity\equip $equip = null)
+    {
+        $this->equip = $equip;
+
+        return $this;
+    }
+
+    /**
+     * Get equip
+     *
+     * @return \OC\FentisBundle\Entity\equip 
+     */
+    public function getEquip()
+    {
+        return $this->equip;
     }
 }

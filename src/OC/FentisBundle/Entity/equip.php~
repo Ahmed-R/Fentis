@@ -1,0 +1,47 @@
+<?php
+
+namespace OC\FentisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * equip
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="OC\FentisBundle\Entity\equipRepository")
+ */
+class equip
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arme1", type="string", length=255)
+     */
+    private $arme1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="armure1", type="string", length=255)
+     */
+    private $armure1;    
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

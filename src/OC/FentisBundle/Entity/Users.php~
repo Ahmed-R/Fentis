@@ -43,14 +43,19 @@ class users{
     private $globals;
 
     /**
-     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\lifeinfo", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\skills", cascade={"persist"})
+     */
+    private $skills;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\lifeInfo", cascade={"persist"})
      */
     private $lifeInfo;
     
     /**
-     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\skills", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\equip", cascade={"persist"})
      */
-    private $skills;
+    private $equip;
 
     public function __construct(){
         $this->password = "123";
@@ -183,25 +188,25 @@ class users{
     }
 
     /**
-     * Set lifeinfo
+     * Set lifeInfo
      *
-     * @param \OC\FentisBundle\Entity\lifeinfo $lifeinfo
+     * @param \OC\FentisBundle\Entity\lifeinfo $lifeInfo
      * @return users
      */
-    public function setLifeInfo(\OC\FentisBundle\Entity\lifeinfo $lifeinfo = null)
+    public function setLifeInfo(\OC\FentisBundle\Entity\lifeInfo $lifeInfo = null)
     {
-        $this->lifeinfo = $lifeinfo;
+        $this->lifeInfo = $lifeInfo;
 
         return $this;
     }
 
     /**
-     * Get lifeinfo
+     * Get lifeInfo
      *
-     * @return \OC\FentisBundle\Entity\lifeinfo 
+     * @return \OC\FentisBundle\Entity\lifeInfo 
      */
     public function getLifeInfo()
     {
-        return $this->lifeinfo;
+        return $this->lifeInfo;
     }
 }
