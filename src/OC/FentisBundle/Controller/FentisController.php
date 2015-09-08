@@ -43,7 +43,7 @@ class FentisController extends Controller {
     public function globalsAction(){        
         $content = $this
                 ->get('templating')
-                ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
+                ->render('::global_layout.html.twig', array(
                     "name" => "globals",
                 ));
         return new Response($content);
