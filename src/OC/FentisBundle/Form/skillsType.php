@@ -15,12 +15,12 @@ class skillsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('education',              'integer')
-            ->add('detection',              'integer')
-            ->add('parade',                 'integer')
-            ->add('esquive',                'integer')
-            ->add('respsy',                 'integer')
-            ->add('lucidite',               'integer')
+            ->add('education',              'number')
+            ->add('detection',              'number')
+            ->add('parade',                 'number')
+            ->add('esquive',                'number')
+            ->add('respsy',                 'number')
+            ->add('lucidite',               'number')
         ;
     }
     
