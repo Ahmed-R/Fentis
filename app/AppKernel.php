@@ -20,7 +20,9 @@ class AppKernel extends Kernel
             
             new OC\FentisBundle\OCFentisBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            
+
+            new OC\UserBundle\OCUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -31,7 +31,7 @@ class usersType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\FentisBundle\Entity\users'
+            'data_class' => 'OC\FentisBundle\Entity\users',
         ));
     }
 

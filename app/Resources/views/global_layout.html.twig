@@ -4,17 +4,21 @@
     <title> {% block title %} - Fentis - {% endblock %} </title>
   </head>
   <body>
+
+      {#Affichage du menu si l'user est authentifié#}
     <div id="menu">
       <ul>
-        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/character-profile">character-profile</a></li>
-        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/globals">globals</a></li>
-        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/skills">skills</a></li>
-        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/lifeinfo">life_info</a></li>
-        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/equip">equip</a></li>
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/chat">chat</a></li>
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/voir">voir</a></li>
+        <hr>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/ajout">ajout</a></li>
+        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/login">login</a></li>
+        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/logout">logout</a></li>
+        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/profile">profile</a></li>
       </ul>
+        {% endif %}
+
       {% block body %}
       {% endblock %}
     </div>

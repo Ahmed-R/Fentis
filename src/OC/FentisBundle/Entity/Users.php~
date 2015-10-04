@@ -57,8 +57,17 @@ class users{
      */
     private $equip;
 
+    /**
+     * @var type string
+     * 
+     * @ORM\Column(name="container", type="text")
+     */
+    private $container;
+    
     public function __construct(){
         $this->password = "123";
+        $this->login = $this->container->get('security.context')->getToken()->getUser();;
+        
     }
 
     /**
@@ -208,5 +217,28 @@ class users{
     public function getLifeInfo()
     {
         return $this->lifeInfo;
+    }
+
+    /**
+     * Set equip
+     *
+     * @param \OC\FentisBundle\Entity\equip $equip
+     * @return users
+     */
+    public function setEquip(\OC\FentisBundle\Entity\equip $equip = null)
+    {
+        $this->equip = $equip;
+
+        return $this;
+    }
+
+    /**
+     * Get equip
+     *
+     * @return \OC\FentisBundle\Entity\equip 
+     */
+    public function getEquip()
+    {
+        return $this->equip;
     }
 }

@@ -111,7 +111,12 @@ class details
      * @ORM\Column(name="note", type="text")
      */
     private $note;
-        
+    
+    
+    public function __construct(){
+    }
+
+
     /**
      * Get id
      *
@@ -259,7 +264,6 @@ class details
     {
         return $this->inconvenientRaciaux;
     }
-
 
     /**
      * Set sexe

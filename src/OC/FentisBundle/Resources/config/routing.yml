@@ -1,8 +1,8 @@
 oc_fentis_login:
     path:     /
-    defaults: { _controller: OCFentisBundle:Fentis:login }
+    defaults: { _controller: OCFentisBundle:Fentis:first }
 
-oc_fentis_welcome:
+oc_fentis_index:
     path:     /index
     defaults: { _controller: OCFentisBundle:Fentis:index }
 

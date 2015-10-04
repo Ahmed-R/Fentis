@@ -15,6 +15,7 @@ class detailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('personnage',             'text')
             ->add('xptotal',                'number')
             ->add('xprestant',              'number')
@@ -30,7 +31,7 @@ class detailsType extends AbstractType
             ->add('note',                   'textarea')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

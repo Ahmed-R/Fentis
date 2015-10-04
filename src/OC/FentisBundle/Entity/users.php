@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -13,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="oc_users")
  * @ORM\Entity(repositoryClass="OC\FentisBundle\Entity\UsersRepository")
+ * @UniqueEntity(fields="login", message="il existe déjà un perso avec ce login")
  */
 class users{
     /**
@@ -27,8 +29,8 @@ class users{
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255)
-     * @Assert\length(min=8)
+     * @ORM\Column(name="login", type="string", length=255, unique=true)
+     * @Assert\length(min=5)
      */
     private $login;
     
@@ -56,7 +58,7 @@ class users{
      * @ORM\ManyToOne(targetEntity="OC\FentisBundle\Entity\equip", cascade={"persist"})
      */
     private $equip;
-
+    
     public function __construct(){
         $this->password = "123";
     }
@@ -232,4 +234,5 @@ class users{
     {
         return $this->equip;
     }
+
 }
