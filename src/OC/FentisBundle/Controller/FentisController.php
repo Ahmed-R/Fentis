@@ -35,7 +35,7 @@ class FentisController extends Controller {
         $content = $this
                 ->get('templating')
                 ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-                        "name" => "chat"
+                        "name" => "page de discussion"
                 ));
         return new Response($content);
     }
@@ -58,13 +58,13 @@ class FentisController extends Controller {
             
             $request->getSession()->getFlashBag()->add('notice', 'ajout ok');
             return $this->redirect($this->generateUrl('oc_fentis_index', array(
-                'name' => 'bleubleubleu'
+                'name' => 'page post creation de perso'
             )));
         }
         
         return $this->render('OCFentisBundle:FentisViews:layout.html.twig', array(
             'form' => $form->createView(),
-            'name' => 'bliblibli vide'
+            'name' => 'page de creation de perso'
         ));   
     }
     
@@ -90,7 +90,7 @@ class FentisController extends Controller {
         $content = $this
                 ->get('templating')
                 ->render('OCFentisBundle:FentisViews:layout.html.twig', array(
-                    "name" => "voir",
+                    "name" => "page de visualisation de perso",
                     "listuser" => $listuser
                 ));
         return new Response($content);
