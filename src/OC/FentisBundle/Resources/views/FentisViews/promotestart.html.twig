@@ -1,0 +1,17 @@
+{% extends "::global_layout.html.twig" %}
+
+
+{% block body %}
+
+{% if allusers is defined %}
+    listing des joueurs enregistrés : <br>
+    {% for user in allusers %}
+        <li>username actuel : {{user.username}}
+            <a href="levelup/{{user.username}}">lien</a>
+    {% endfor %}
+{% endif %}
+
+
+{% endblock %}
+
+

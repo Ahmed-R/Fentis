@@ -27,5 +27,10 @@ class User extends BaseUser
     public function getId(){
         return $this->id;
     }
+    
+    public function __construct() {
+        parent::__construct();
+        $this->addRole("ROLE_JOUEUR");
+    }
 
 }

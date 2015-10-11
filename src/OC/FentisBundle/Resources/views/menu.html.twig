@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title> {% block title %} - Fentis - {% endblock %} </title>
-  </head>
-  <body>
-  
-        <ul>
+
+    <div id="menu">
+      <ul>
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/chat">chat</a></li>
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/modif">modif</a></li>
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/voir">voir</a></li>
-        <hr>
-        {% if is_granted('ROLE_ADMIN') %}    
-        lien Admin : 
-        <li><a href="http://localhost:8888/Fentis/web/app_dev.php/promotestart">promote start</a></li>
-        {% endif %}
         <hr>
         {#Affichage du menu si l'user est authentifié#}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -23,9 +13,4 @@
         <li><a href="http://localhost:8888/Fentis/web/app_dev.php/profile">profile</a></li>
         {% endif %}
         </ul>
-        <hr>
-      {% block body %}      
-      {% endblock %}
-    </div>
-  </body>
-</html>
+        

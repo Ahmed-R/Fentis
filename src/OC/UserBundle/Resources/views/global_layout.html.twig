@@ -1,7 +1,8 @@
-{% extends "OCFentisBundle:FentisViews:layout.html.twig" %}
+{% extends "OCFentisBundle::layout.html.twig" %}
 
 {% block body %}
 {#    {% for key, message in app.session.flashbag.all() %}#}
+
     {% for message in app.session.flashbag.all() %}
         <div class="alert alert-{{ key }}">
           {{ message|trans({}, 'FOSUserBundle') }}
@@ -9,5 +10,8 @@
     {% endfor %}
 {% block fos_user_content %}
 {% endblock fos_user_content %}
+
+
+{{ block('fos_user_content')}}
 
 {% endblock %}

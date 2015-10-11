@@ -5,26 +5,6 @@ oc_fentis_login:
 oc_fentis_index:
     path:     /index
     defaults: { _controller: OCFentisBundle:Fentis:index }
-
-oc_fentis_characterprofile:
-    path:     /character-profile
-    defaults: { _controller: OCFentisBundle:Fentis:charprof }
-
-oc_fentis_globals:
-    path:     /globals
-    defaults: { _controller: OCFentisBundle:Fentis:globals }
-
-oc_fentis_skills:
-    path:     /skills
-    defaults: { _controller: OCFentisBundle:Fentis:skills }
-
-oc_fentis_lifeinfo:
-    path:     /lifeinfo
-    defaults: { _controller: OCFentisBundle:Fentis:lifeinfo }
-    
-oc_fentis_equip:
-    path:     /equip
-    defaults: { _controller: OCFentisBundle:Fentis:equip }
     
 oc_fentis_chat:
     path:     /chat
@@ -41,3 +21,15 @@ oc_fentis_ajout:
 oc_fentis_voir:
     path:     /voir
     defaults: { _controller: OCFentisBundle:Fentis:voir }
+
+oc_fentis_modif:
+    path:     /modif
+    defaults: { _controller: OCFentisBundle:Fentis:modif }
+    
+oc_fentis_promote:
+    path:     /promotestart
+    defaults: { _controller: OCFentisBundle:Fentis:promotestart }
+    
+oc_fentis_levelup:
+    path:     /levelup/{user}
+    defaults: { _controller: OCFentisBundle:Fentis:levelup}

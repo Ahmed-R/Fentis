@@ -2,25 +2,42 @@
 
 {% block title %} {{ parent() }} INDEX {% endblock %}
 
-{% block body %}
 
+{% block body %}
+    
     {{ name }} <br>
 
 {# block pour la notification apres un ajout #}
 {% for message in app.session.flashbag.get('notice') %}
-  <p>Message flash : {{message}}</p>
+  <div id="flash"><p>Message flash : {{message}}</p></div>
 {% endfor %}
 
 {# block pour la partie ajout #}
 {% if form is defined %}
   <h3> Formulaire </h3>
   {{ form(form) }}
-
 {% endif %}
 
-{# block pour la partie 'voir' #}
+{# block pour la partie 'voir #}
 {% if listuser is defined %}
   {% for user in listuser %}
+    login : {{ user.login }}<br>
+    race: {{ user.details.race }}<br>
+    sexe : {{ user.details.sexe }}<br>
+    note : {{ user.details.note }}<br>
+    arme 1 : {{ user.equip.arme1 }}<br>
+    armure 1 : {{ user.equip.armure1 }}<hr>
+    stat :<br>
+    aura : {{ user.globals.aura }}<br>
+    ressource : {{ user.globals.ressource }}<br>
+    agilite : {{ user.globals.agilite }}<br>
+<hr><hr>
+  {% endfor %}
+{% endif %}
+
+{# block pour la partie 'modif' #}
+{% if listusermodif is defined %}
+  {% for user in listusermodif %}
     login : {{ user.login }}<br>
     race: {{ user.details.race }}<br>
     sexe : {{ user.details.sexe }}<br>
